@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Diagnóstico Socio-Espiritual y Mapa Comunitario</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        spiritual: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        },
+                        danger: '#ef4444',
+                        warning: '#f59e0b',
+                        success: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f766e 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-teal-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- HEADER / HERO SECTION -->
+    <header class="gradient-bg text-white relative overflow-hidden shadow-xl">
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-semibold uppercase tracking-wider mb-3">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                        Metodología de Cartografía Social
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+                        Diagnóstico <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-purple-300">Socio-Espiritual</span>
+                    </h1>
+                    <p class="mt-2 text-slate-300 max-w-2xl text-sm sm:text-base">
+                        Guía metodológica interactiva para la delimitación territorial, recolección de datos tangibles e intangibles, cartografía social y devolución comunitaria.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="scrollToSection('flujo-metodologico')" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-slate-900 font-bold px-4 py-2.5 rounded-xl transition duration-200 shadow-lg shadow-teal-500/20 text-sm">
+                        <i data-lucide="compass" class="w-4 h-4"></i>
+                        Explorar Metodología
+                    </button>
+                    <button onclick="scrollToSection('simulador-mapa')" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-4 py-2.5 rounded-xl transition duration-200 text-sm backdrop-blur-sm">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        Mapa Interactivo
+                    </button>
+                </div>
+            </div>
+
+            <!-- KEY STATS / HIGHLIGHTS BAR -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/10">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-teal-500/20 rounded-lg text-teal-300 border border-teal-500/30">
+                        <i data-lucide="git-commit" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-white">5 Pasos</div>
+                        <div class="text-xs text-slate-400">Ruta Metodológica</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-purple-500/20 rounded-lg text-purple-300 border border-purple-500/30">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-white">2 Dimens.</div>
+                        <div class="text-xs text-slate-400">Tangible e Intangible</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-amber-500/20 rounded-lg text-amber-300 border border-amber-500/30">
+                        <i data-lucide="file-spreadsheet" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-white">4 Bloques</div>
+                        <div class="text-xs text-slate-400">Guía de Entrevistas</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-sky-500/20 rounded-lg text-sky-300 border border-sky-500/30">
+                        <i data-lucide="presentation" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-white">10 Diapos</div>
+                        <div class="text-xs text-slate-400">Estructura Presentación</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION TABS BAR -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto custom-scrollbar gap-2 py-2 text-sm font-medium">
+                <button onclick="switchTab('pasos')" id="tab-pasos" class="tab-btn active px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap bg-teal-50 text-teal-700 font-semibold border border-teal-200">
+                    <i data-lucide="list-ordered" class="w-4 h-4"></i> 1. Flujo Metodológico
+                </button>
+                <button onclick="switchTab('mapa')" id="tab-mapa" class="tab-btn px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i data-lucide="map" class="w-4 h-4"></i> 2. Mapa y Capas Sociales
+                </button>
+                <button onclick="switchTab('recorrido')" id="tab-recorrido" class="tab-btn px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i data-lucide="clipboard-check" class="w-4 h-4"></i> 3. Plantilla de Campo
+                </button>
+                <button onclick="switchTab('entrevista')" id="tab-entrevista" class="tab-btn px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> 4. Guía de Entrevista
+                </button>
+                <button onclick="switchTab('analisis')" id="tab-analisis" class="tab-btn px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i data-lucide="pie-chart" class="w-4 h-4"></i> 5. Sistematización
+                </button>
+                <button onclick="switchTab('informe')" id="tab-informe" class="tab-btn px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> 6. Informe & Diaporama
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+
+        <!-- SECTION 1: FLUJO METODOLÓGICO DE 5 PASOS -->
+        <section id="sec-pasos" class="tab-content block">
+            <div class="mb-8">
+                <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Ruta de Implementación</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Los 5 Pasos del Diagnóstico Socio-Espiritual</h2>
+                <p class="text-slate-600 text-sm mt-1">Siga este ciclo ordenado para articular la dimensión técnica con la voz participativa de los vecinos.</p>
+            </div>
+
+            <!-- PROCESS ROADMAP CARDS -->
+            <div class="relative border-l-2 border-teal-200 ml-4 pl-6 space-y-8 my-6">
+                
+                <!-- STEP 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">
+                        1
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
+                            <div>
+                                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Paso Previo</span>
+                                <h3 class="text-lg font-bold text-slate-900 mt-1">Delimitar el Territorio y Conformar el Equipo</h3>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Alcance & Gobernanza</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-xs font-bold text-teal-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="map" class="w-4 h-4"></i> Definir Área Geográfica
+                                </h4>
+                                <p class="text-xs text-slate-600">Seleccionar los límites exactos del territorio a estudiar: barrio, sector, comuna, cuadrante o villa.</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-xs font-bold text-purple-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="users" class="w-4 h-4"></i> Equipo Multidisciplinario
+                                </h4>
+                                <ul class="text-xs text-slate-600 space-y-1">
+                                    <li>• <strong>Facilitadores:</strong> Guiar diálogos comunitarios.</li>
+                                    <li>• <strong>Observadores:</strong> Registrar dinámicas de campo.</li>
+                                    <li>• <strong>Transcriptores:</strong> Sistematizar testimonios.</li>
+                                    <li>• <strong>Cartógrafos:</strong> Dibujar y digitalizar los mapas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">
+                        2
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
+                            <div>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Dimensión Tangible</span>
+                                <h3 class="text-lg font-bold text-slate-900 mt-1">Recolección de Datos Sociales y Demográficos</h3>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Cuantitativo & Infraestructura</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="bar-chart-2" class="w-4 h-4"></i> Censo Básico e Indicadores
+                                </h4>
+                                <p class="text-xs text-slate-600">Registrar población total, distribución por grupos etarios, niveles socioeconómicos y cobertura de servicios básicos (agua, luz, pavimento, saneamiento).</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="building-2" class="w-4 h-4"></i> Mapeo de Actores e Instituciones
+                                </h4>
+                                <p class="text-xs text-slate-600">Identificar Juntas de Vecinos, Centros de Salud (CESFAM/Hospitales), Escuelas, Jardines, Comisarías, Comercios locales y ONGs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">
+                        3
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
+                            <div>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Dimensión Intangible</span>
+                                <h3 class="text-lg font-bold text-slate-900 mt-1">Levantamiento de la Dimensión Espiritual y Relacional</h3>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Cualitativo & Vínculos</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                                <h4 class="text-xs font-bold text-purple-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="heart-handshake" class="w-4 h-4"></i> Entrevistas y Observaciones
+                                </h4>
+                                <p class="text-xs text-slate-600">Ubicación de templos, iglesias, grutas, capillitas, murales, dinámicas religiosas de fe urbana, valores comunitarios y necesidades afectivo-existenciales.</p>
+                            </div>
+                            <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                                <h4 class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="shield-alert" class="w-4 h-4"></i> Riesgos vs. Recursos Espirituales
+                                </h4>
+                                <p class="text-xs text-slate-600"><strong>Factores de riesgo:</strong> Adicciones, inseguridad, aislamiento, duelos no resueltos.<br><strong>Recursos:</strong> Redes de apoyo, fe viva, solidaridad, vocación de servicio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">
+                        4
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
+                            <div>
+                                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Representación Visual</span>
+                                <h3 class="text-lg font-bold text-slate-900 mt-1">Elaboración del Mapa Comunitario</h3>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Físico o Digital Interactivo</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-xs font-bold text-teal-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="pen-tool" class="w-4 h-4"></i> Dibujo del Mapa Base
+                                </h4>
+                                <p class="text-xs text-slate-600">Trazado claro de calles principales, pasajes, plazas, pasarelas, quebradas e hitos geográficos reconocibles.</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="tag" class="w-4 h-4"></i> Convenciones y Convenciones Gráficas
+                                </h4>
+                                <p class="text-xs text-slate-600">Uso de simbología, colores e íconos: Verde (Recursos y Esperanza), Rojo (Puntos Críticos/Riesgo), Azul (Instituciones), Violeta (Fe y Espiritualidad).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">
+                        5
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
+                            <div>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Cierre Participativo</span>
+                                <h3 class="text-lg font-bold text-slate-900 mt-1">Sistematización y Devolución a la Comunidad</h3>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Validación & Plan de Acción</span>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+                                <h4 class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="grid" class="w-4 h-4"></i> Matriz de Priorización
+                                </h4>
+                                <p class="text-xs text-slate-600">Cruzar las necesidades más sentidas con las capacidades comunitarias reales. Matriz de Frecuencia vs. Impacto.</p>
+                            </div>
+                            <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+                                <h4 class="text-xs font-bold text-teal-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i data-lucide="users" class="w-4 h-4"></i> Encuentro Participativo
+                                </h4>
+                                <p class="text-xs text-slate-600">Asamblea o taller con vecinos para validar hallazgos, corregir datos en el mapa y comprometer las primeras líneas de acción.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RECOMMENDED TOOLS BOX -->
+            <div class="mt-8 bg-slate-900 text-white rounded-2xl p-6 shadow-lg relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-10 translate-x-10 -translate-y-10">
+                    <i data-lucide="wrench" class="w-64 h-64 text-white"></i>
+                </div>
+                <h3 class="text-lg font-bold text-teal-300 flex items-center gap-2 mb-4">
+                    <i data-lucide="box" class="w-5 h-5"></i> Herramientas Recomendadas para la Recolección
+                </h3>
+                <div class="grid sm:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="font-bold text-teal-200 mb-1 flex items-center gap-1.5">
+                            <i data-lucide="file-check-2" class="w-4 h-4"></i> Cuestionarios y Guías
+                        </div>
+                        <p class="text-slate-300">Estandarizan la toma de notas en terreno. Aseguran que todo el equipo multidisciplinario evalúe los mismos parámetros.</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="font-bold text-purple-200 mb-1 flex items-center gap-1.5">
+                            <i data-lucide="map-pin-line" class="w-4 h-4"></i> Mapas Parlantes
+                        </div>
+                        <p class="text-slate-300">Cartografía social en talleres donde los propios vecinos dibujan el pasado (memoria), presente (realidad) y futuro deseado del barrio.</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="font-bold text-amber-200 mb-1 flex items-center gap-1.5">
+                            <i data-lucide="laptop" class="w-4 h-4"></i> Software GIS / Digital
+                        </div>
+                        <p class="text-slate-300">Google My Maps o QGIS para digitalizar las capas geográficas y sociales, permitiendo actualizaciones y reportes técnicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SIMULADOR DE MAPA Y CAPAS SOCIALES -->
+        <section id="sec-mapa" class="tab-content hidden">
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Visualizador Conceptualmente</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Mapa Comunitario Integrado: Capas de Análisis</h2>
+                    <p class="text-slate-600 text-sm mt-1">Intercambie capas para observar la superposición entre infraestructura tangible y dinámicas espirituales.</p>
+                </div>
+                <!-- LAYER CONTROLS -->
+                <div class="flex flex-wrap gap-2 bg-slate-200 p-1.5 rounded-xl text-xs font-semibold">
+                    <button onclick="toggleMapLayer('all')" id="layer-btn-all" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm transition">Todas las Capas</button>
+                    <button onclick="toggleMapLayer('tangible')" id="layer-btn-tangible" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Tangibles (Infraestructura)</button>
+                    <button onclick="toggleMapLayer('intangible')" id="layer-btn-intangible" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Intangibles (Espiritual/Social)</button>
+                </div>
+            </div>
+
+            <!-- SIMULATED MAP DISPLAY GRID -->
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- THE MAP CANVAS CONTAINER -->
+                <div class="lg:col-span-2 bg-slate-900 rounded-2xl p-6 relative min-h-[420px] shadow-xl overflow-hidden flex flex-col justify-between border border-slate-800">
+                    
+                    <!-- GRID PATTERN BACKGROUND -->
+                    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#38bdf8 1px, transparent 1px); background-size: 24px 24px;"></div>
+                    
+                    <!-- STREET LINES SIMULATION -->
+                    <svg class="absolute inset-0 w-full h-full opacity-30 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10%" y1="20%" x2="90%" y2="20%" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="6,6" />
+                        <line x1="20%" y1="10%" x2="20%" y2="90%" stroke="#cbd5e1" stroke-width="4" />
+                        <line x1="75%" y1="10%" x2="75%" y2="90%" stroke="#cbd5e1" stroke-width="4" />
+                        <line x1="10%" y1="70%" x2="90%" y2="70%" stroke="#cbd5e1" stroke-width="4" />
+                        <circle cx="50%" cy="45%" r="80" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-dasharray="4,4" />
+                    </svg>
+
+                    <!-- MAP TITLE OVERLAY -->
+                    <div class="relative z-10 flex items-center justify-between">
+                        <span class="bg-slate-800/80 text-teal-400 border border-teal-500/30 px-3 py-1 rounded-full text-xs font-mono">
+                            SECTOR: BARRIO NUEVO HORIZONTE
+                        </span>
+                        <div class="flex gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs text-slate-400">Modo Interactivo</span>
+                        </div>
+                    </div>
+
+                    <!-- INTERACTIVE MAP PINS -->
+                    <div class="relative z-10 my-auto grid grid-cols-3 gap-6 py-8">
+                        
+                        <!-- PIN 1: ESCUELA (Tangible) -->
+                        <div class="map-pin layer-tangible bg-blue-600/90 text-white p-3 rounded-xl shadow-lg border border-blue-400/50 cursor-pointer hover:scale-105 transition group" onclick="showPinDetail('escuela')">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-200"></i>
+                                <div>
+                                    <div class="text-xs font-bold">Escuela Local</div>
+                                    <div class="text-[10px] text-blue-200">Infraestructura / Servicios</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIN 2: TEMPLO (Intangible/Espiritual) -->
+                        <div class="map-pin layer-intangible bg-purple-600/90 text-white p-3 rounded-xl shadow-lg border border-purple-400/50 cursor-pointer hover:scale-105 transition group" onclick="showPinDetail('templo')">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="church" class="w-5 h-5 text-purple-200"></i>
+                                <div>
+                                    <div class="text-xs font-bold">Templo Evangelico</div>
+                                    <div class="text-[10px] text-purple-200">Centro de Contención</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIN 3: PUNTO DE RIESGO (Intangible/Social) -->
+                        <div class="map-pin layer-intangible bg-rose-600/90 text-white p-3 rounded-xl shadow-lg border border-rose-400/50 cursor-pointer hover:scale-105 transition group" onclick="showPinDetail('riesgo')">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-200"></i>
+                                <div>
+                                    <div class="text-xs font-bold">Esq. Adicciones</div>
+                                    <div class="text-[10px] text-rose-200">Foco de Inseguridad</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIN 4: PARQUE CENTRAL (Tangible) -->
+                        <div class="map-pin layer-tangible bg-emerald-600/90 text-white p-3 rounded-xl shadow-lg border border-emerald-400/50 cursor-pointer hover:scale-105 transition group" onclick="showPinDetail('parque')">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="trees" class="w-5 h-5 text-emerald-200"></i>
+                                <div>
+                                    <div class="text-xs font-bold">Plaza Principal</div>
+                                    <div class="text-[10px] text-emerald-200">Punto de Encuentro</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIN 5: HUERTO VECINAL (Esperanza) -->
+                        <div class="map-pin layer-intangible bg-amber-600/90 text-white p-3 rounded-xl shadow-lg border border-amber-400/50 cursor-pointer hover:scale-105 transition group" onclick="showPinDetail('huerto')">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="sprout" class="w-5 h-5 text-amber-200"></i>
+                                <div>
+                                    <div class="text-xs font-bold">Huerto Comunitario</div>
+                                    <div class="text-[10px] text-amber-200">Signo de Esperanza</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIN 6: CESFAM (Tangible) -->
+                        <div class="map-pin layer-tangible bg-teal-600/90 text-white p-3 rounded-xl shadow-lg border border-teal-400/50 cursor-pointer hover:scale-105 transition group" onclick="showPinDetail('cesfam')">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="heart-pulse" class="w-5 h-5 text-teal-200"></i>
+                                <div>
+                                    <div class="text-xs font-bold">Centro de Salud</div>
+                                    <div class="text-[10px] text-teal-200">Servicio Público</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- MAP LEGEND -->
+                    <div class="relative z-10 bg-slate-800/90 p-3 rounded-xl border border-slate-700 flex flex-wrap items-center justify-between gap-2 text-xs">
+                        <span class="font-bold text-slate-300">Convenciones:</span>
+                        <div class="flex items-center gap-4 text-[11px] text-slate-300">
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Instituciones</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Centros Fe</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Riesgo/Conflicto</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Recursos/Esperanza</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIDE PANEL FOR PIN DETAILS -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                            <h3 class="font-bold text-slate-900" id="pin-detail-title">Seleccione un elemento del mapa</h3>
+                            <span id="pin-detail-badge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Info</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4" id="pin-detail-desc">
+                            Haga clic en cualquiera de los puntos marcados en el mapa para examinar su cruce entre la dimensión física y el clima socio-espiritual.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs space-y-2 hidden" id="pin-detail-meta">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">Dimensión:</span>
+                                <span class="font-semibold text-slate-800" id="pin-meta-dimension">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">Impacto Comunitario:</span>
+                                <span class="font-semibold text-slate-800" id="pin-meta-impacto">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                        <h4 class="text-xs font-bold text-teal-800 flex items-center gap-1.5 mb-1">
+                            <i data-lucide="lightbulb" class="w-4 h-4"></i> Consejo Metodológico
+                        </h4>
+                        <p class="text-[11px] text-teal-700">
+                            Superponer lugares de riesgo con centros de fe o huertos vecinales visibiliza <strong>zonas de oportunidad comunitaria</strong> para la acción inmediata.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PLANTILLA DE RECORRIDO DE CAMPO -->
+        <section id="sec-recorrido" class="tab-content hidden">
+            <div class="mb-6">
+                <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Herramienta N° 1</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Plantilla de Recorrido de Campo Socio-Espiritual</h2>
+                <p class="text-slate-600 text-sm mt-1">Ficha estandarizada para observadores en terreno. Permite registrar simultáneamente lo tangible y lo intangible.</p>
+            </div>
+
+            <!-- METADATA FORM SIMULATOR -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 mb-6">
+                <h3 class="text-sm font-bold text-slate-800 mb-3 uppercase tracking-wider flex items-center gap-2">
+                    <i data-lucide="clipboard-list" class="w-4 h-4 text-teal-600"></i> 1. Datos Generales del Recorrido
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div>
+                        <label class="block text-slate-500 font-medium mb-1">Fecha y Hora:</label>
+                        <input type="text" value="24 Octubre 2026 - 10:00 AM" readonly class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-slate-500 font-medium mb-1">Territorio / Sector:</label>
+                        <input type="text" value="Sector Central, Cuadrante 3" readonly class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-slate-500 font-medium mb-1">Equipo Observador:</label>
+                        <input type="text" value="Ana M., Carlos R., María L." readonly class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-slate-500 font-medium mb-1">Entorno / Clima:</label>
+                        <input type="text" value="Soleado, alto flujo peatonal" readonly class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 font-mono">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TWO DIMENSIONS TABLES -->
+            <div class="grid lg:grid-cols-2 gap-6">
+                
+                <!-- TANGIBLE DIMENSION -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
+                            <i data-lucide="building" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">2. Dimensión Social e Infraestructura</h3>
+                            <span class="text-xs text-slate-500">Lo Tangible (Físico y Geográfico)</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="font-bold text-slate-800 mb-1">Vivienda y Entorno</div>
+                            <p class="text-slate-500 mb-2">Tipo de edificación, conservación, plazas y parques públicos.</p>
+                            <input type="text" placeholder="Ej: Casas unifamiliares con rejas altas, pasajes angostos..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="font-bold text-slate-800 mb-1">Puntos de Encuentro</div>
+                            <p class="text-slate-500 mb-2">Canchas, comercios populares, paraderos, esquinas de congregación.</p>
+                            <input type="text" placeholder="Ej: Multicancha central activa por las tardes, almacén 'El Sol'..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="font-bold text-slate-800 mb-1">Servicios e Instituciones</div>
+                            <p class="text-slate-500 mb-2">Escuelas, centros de salud, comisarías, sedes vecinales, ONGs.</p>
+                            <input type="text" placeholder="Ej: Escuela D-45, Jardín Infantil, Sede Comunitario en buen estado..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="font-bold text-slate-800 mb-1">Indicadores de Riesgo Físico</div>
+                            <p class="text-slate-500 mb-2">Microbasurales, iluminación deficiente, ruinas abandonadas.</p>
+                            <input type="text" placeholder="Ej: Microbasural en esquina Av. Principal, luminarias rotas..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTANGIBLE DIMENSION -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                        <div class="p-2 bg-purple-100 text-purple-700 rounded-lg">
+                            <i data-lucide="heart" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">3. Dimensión Espiritual y Relacional</h3>
+                            <span class="text-xs text-slate-500">Lo Intangible (Fe, Clima Social y Afectivo)</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-purple-50/50 rounded-xl border border-purple-100">
+                            <div class="font-bold text-slate-800 mb-1">Presencia de Fe en el Entorno</div>
+                            <p class="text-slate-500 mb-2">Templos, capillas, grutas, hornacinas, murales espirituales/religiosos.</p>
+                            <input type="text" placeholder="Ej: 2 Capillas evangélicas pequeñas, gruta San Cayetano..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                        <div class="p-3 bg-purple-50/50 rounded-xl border border-purple-100">
+                            <div class="font-bold text-slate-800 mb-1">Clima Social y Emocional</div>
+                            <p class="text-slate-500 mb-2">Actitud de vecinos (abierta, alerta, distante), dinamismo y ambiente sonoro.</p>
+                            <input type="text" placeholder="Ej: Transeúntes cautelosos, poco diálogo espontáneo en calles..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                        <div class="p-3 bg-purple-50/50 rounded-xl border border-purple-100">
+                            <div class="font-bold text-slate-800 mb-1">Vulnerabilidad Espiritual / Heridas</div>
+                            <p class="text-slate-500 mb-2">Sitios de adicción, focos de violencia, aislamiento social de ancianos.</p>
+                            <input type="text" placeholder="Ej: Grupo de jóvenes en consumo en plazoleta posterior..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                        <div class="p-3 bg-purple-50/50 rounded-xl border border-purple-100">
+                            <div class="font-bold text-slate-800 mb-1">Signos de Esperanza</div>
+                            <p class="text-slate-500 mb-2">Huertos comunitarios, murales positivos, redes de apoyo mutuo.</p>
+                            <input type="text" placeholder="Ej: Mural pintado por jóvenes: 'Nuestra Historia Importa'..." class="w-full bg-white border border-slate-200 rounded p-1.5 text-slate-700">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- POST-RECORRIDO SYNTHESIS BOX -->
+            <div class="mt-6 bg-slate-900 text-white p-6 rounded-2xl shadow-md">
+                <h3 class="text-sm font-bold text-teal-400 mb-3 uppercase tracking-wider flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> 5. Síntesis y Reflexión del Equipo (Post-Recorrido)
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="text-emerald-400 font-semibold block mb-1">¿Mayor Fortaleza socio-espiritual?</span>
+                        <p class="text-slate-300">Resiliencia de dirigentes antiguos y fuerte arraigo comunitario alrededor de eventos solidarios.</p>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="text-rose-400 font-semibold block mb-1">¿Necesidad o herida más urgente?</span>
+                        <p class="text-slate-300">Soledad profunda en adultos mayores y falta de contención para adicciones juveniles.</p>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="text-amber-400 font-semibold block mb-1">Puntos clave a marcar en Mapa:</span>
+                        <p class="text-slate-300">Plaza central (punto crítico nocturno, potencial espacio de esperanza diurno) y sede social.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: GUÍA DE ENTREVISTA SEMIESTRUCTURADA -->
+        <section id="sec-entrevista" class="tab-content hidden">
+            <div class="mb-6">
+                <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Herramienta N° 2</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Guía de Entrevista Semiestructurada Socio-Espiritual</h2>
+                <p class="text-slate-600 text-sm mt-1">Estructura conversacional en 4 bloques para profundizar en las historias y dolores de la comunidad.</p>
+            </div>
+
+            <!-- 4 BLOCKS ACCORDION / CARDS GRID -->
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- BLOQUE 1 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-xl bg-teal-500 text-white font-bold flex items-center justify-center text-sm shadow">
+                            1
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">Identidad, Memoria e Historia Local</h3>
+                            <span class="text-xs text-teal-700 font-medium">Objetivo: Comprender la raíz del territorio y el arraigo.</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-teal-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Historia:</strong> ¿Cómo era este sector cuando usted llegó? ¿Cuáles son los hitos o cambios más grandes?</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-teal-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Identidad:</strong> ¿Qué es lo que más enorgullece o caracteriza a las personas de aquí?</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-teal-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Hitos clave:</strong> Si mostrara el barrio a un extraño, ¿qué lugares emblemáticos le mostraría?</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BLOQUE 2 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-xl bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow">
+                            2
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">Realidad Social y Dinámicas Comunitarias</h3>
+                            <span class="text-xs text-blue-700 font-medium">Objetivo: Evaluar infraestructura, dificultades y cohesión.</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Convivencia:</strong> ¿Cómo describiría las relaciones vecinales hoy? (Cercanía, desconfianza, aislamiento).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Problemáticas:</strong> ¿Cuáles son las 3 mayores dificultades cotidianas de las familias?</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Sostén en crisis:</strong> Ante una emergencia familiar, ¿a quién acuden los vecinos habitualmente?</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BLOQUE 3 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-xl bg-purple-600 text-white font-bold flex items-center justify-center text-sm shadow">
+                            3
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">Dimensión Espiritual, Valores y Fe</h3>
+                            <span class="text-xs text-purple-700 font-medium">Objetivo: Identificar clima de fe y dolor emocional/existencial.</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Presencia de Fe:</strong> ¿Qué papel juegan las iglesias o centros religiosos en el barrio?</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Necesidades intangibles:</strong> Más allá de lo material, ¿cuáles son los dolores más profundos? (Soledad, duelos).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Sanación y Escucha:</strong> ¿Existen espacios donde la gente se sienta escuchada y contenida?</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BLOQUE 4 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-xl bg-amber-500 text-white font-bold flex items-center justify-center text-sm shadow">
+                            4
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">Visión de Futuro y Propuestas de Acción</h3>
+                            <span class="text-xs text-amber-700 font-medium">Objetivo: Rescatar la esperanza y disposición a colaborar.</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Sueños:</strong> Si tuviera recursos para cambiar algo en 2 años, ¿qué transformaría?</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                            <span><strong>Colaboración:</strong> ¿De qué manera le gustaría participar para mejorar el bienestar integral del barrio?</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- ADVICE BOX FOR INTERVIEWERS -->
+            <div class="mt-6 bg-slate-100 rounded-2xl p-6 border border-slate-200">
+                <h4 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-600"></i> Indicaciones Fundamentales para el Entrevistador
+                </h4>
+                <div class="grid sm:grid-cols-3 gap-4 text-xs text-slate-600">
+                    <div class="bg-white p-3 rounded-xl border border-slate-200">
+                        <strong class="text-slate-800 block mb-1">Flexibilidad:</strong>
+                        No es un cuestionario rígido. Si el entrevistado profundiza en un relato valioso, permita que la conversación fluya libremente.
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200">
+                        <strong class="text-slate-800 block mb-1">Escucha Activa:</strong>
+                        Preste especial atención a los silencios, emociones y lenguaje corporal al tocar temas de dolor, duelo o vulnerabilidad.
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200">
+                        <strong class="text-slate-800 block mb-1">Consentimiento:</strong>
+                        Solicite siempre autorización explícita antes de tomar notas detalladas o grabar el audio de la entrevista.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SISTEMATIZACIÓN Y ANÁLISIS DE DATOS -->
+        <section id="sec-analisis" class="tab-content hidden">
+            <div class="mb-6">
+                <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Matriz de Sistematización</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Análisis e Interpretación de Resultados</h2>
+                <p class="text-slate-600 text-sm mt-1">Cómo agrupar testimonios, codificar temáticas y realizar el cruce socio-espacial.</p>
+            </div>
+
+            <!-- ANALYTICAL FLOW DIAGRAM -->
+            <div class="bg-slate-900 text-white rounded-2xl p-6 mb-6 shadow-lg">
+                <h3 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-4">Flujo de Análisis de Datos Cualitativos</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-teal-500/20 text-teal-300 font-bold inline-flex items-center justify-center mb-1">1</span>
+                        <div class="font-bold text-white">Transcripción</div>
+                        <div class="text-[10px] text-slate-400">Agrupación de entrevistas</div>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-300 font-bold inline-flex items-center justify-center mb-1">2</span>
+                        <div class="font-bold text-white">Codificación</div>
+                        <div class="text-[10px] text-slate-400">Etiquetas #Adicciones #Soledad</div>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 font-bold inline-flex items-center justify-center mb-1">3</span>
+                        <div class="font-bold text-white">Patrones</div>
+                        <div class="text-[10px] text-slate-400">Frecuencia e Impacto</div>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 font-bold inline-flex items-center justify-center mb-1">4</span>
+                        <div class="font-bold text-white">Cruce Mapa</div>
+                        <div class="text-[10px] text-slate-400">Ubicación socio-espacial</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAMPLE MATRIX TABLE -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-6">
+                <div class="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                    <h3 class="font-bold text-slate-800 text-sm">Ejemplo de Matriz Integrada de Sistematización</h3>
+                    <span class="text-xs bg-teal-100 text-teal-800 font-medium px-2.5 py-0.5 rounded-full">3 Entrevistas Tipo</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-600">
+                        <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">ID / Actor</th>
+                                <th class="p-3">B1: Historia e Identidad</th>
+                                <th class="p-3">B2: Desafíos Sociales</th>
+                                <th class="p-3">B3: Dimensión Espiritual</th>
+                                <th class="p-3">B4: Propuestas</th>
+                                <th class="p-3 bg-teal-50 text-teal-900">Cita Textual Clave</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-3 font-semibold text-slate-900">E-01<br><span class="text-[10px] text-slate-500">Dirigente Vecinal</span></td>
+                                <td class="p-3">Fundado hace 30 años por autogestión. Orgullo por parque central.</td>
+                                <td class="p-3">Inseguridad nocturna. Redes débiles con la policía.</td>
+                                <td class="p-3">Solidaridad en emergencias, pero alta soledad en adultos mayores.</td>
+                                <td class="p-3">Alumbrado público y talleres juveniles comunitarios.</td>
+                                <td class="p-3 bg-teal-50/50 font-medium text-slate-800 italic">"Aquí nos apoyamos en los incendios o crisis, pero en el día a día cada uno vive encerrado."</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-3 font-semibold text-slate-900">E-02<br><span class="text-[10px] text-slate-500">Líder Religioso</span></td>
+                                <td class="p-3">Llegada constante de familias migrantes en la última década.</td>
+                                <td class="p-3">Desempleo informal y falta de espacios deportivos.</td>
+                                <td class="p-3">Alta receptividad a ayuda social; dolor por adicciones juveniles.</td>
+                                <td class="p-3">Centro de apoyo escolar y contención emocional.</td>
+                                <td class="p-3 bg-teal-50/50 font-medium text-slate-800 italic">"La gente no solo busca comida, busca a alguien que la escuche sin juzgar."</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-3 font-semibold text-slate-900">E-03<br><span class="text-[10px] text-slate-500">Vecino Antiguo</span></td>
+                                <td class="p-3">Pérdida de comercio local. Nostalgia por fiestas de barrio.</td>
+                                <td class="p-3">Desarticulación entre vecinos antiguos y nuevos residentes.</td>
+                                <td class="p-3">Centros de culto vistos como refugios, pero aislados entre sí.</td>
+                                <td class="p-3">Recuperar la plaza como punto de encuentro intergeneracional.</td>
+                                <td class="p-3 bg-teal-50/50 font-medium text-slate-800 italic">"Antes todos sabíamos los nombres de los niños; hoy no conocemos al vecino de al lado."</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PRIORITIZATION MATRIX (FRECUENCIA VS IMPACTO) -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
+                        <i data-lucide="target" class="w-4 h-4 text-rose-600"></i> Matriz de Priorización de Necesidades
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-rose-50 rounded-xl border border-rose-100">
+                            <span class="font-bold text-rose-800 block mb-1">Necesidades Críticas (Alta Frecuencia + Alto Impacto)</span>
+                            <p class="text-rose-700">Problemas urgentes como focos de adicción juvenil e inseguridad nocturna en plazas públicas.</p>
+                        </div>
+                        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                            <span class="font-bold text-emerald-800 block mb-1">Recursos Activos (Fortalezas Repetidas)</span>
+                            <p class="text-emerald-700">Fuerte sentido de pertenencia en vecinos antiguos, juntas vecinales y comunidades de fe dispuestas a servir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-purple-600"></i> Cruce Socio-Espacial
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        Relaciona las citas cualitativas con puntos específicos del mapa geográfico.
+                    </p>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                        <span class="font-bold text-slate-800 block mb-1">Ejemplo de cruce:</span>
+                        <p class="text-slate-600">
+                            La "Plaza Principal" se identifica verbalmente como un lugar de <em>nostalgia comunitaria</em>, pero en el mapa actual se marca como <em>zona de riesgo nocturno</em>. 
+                            <strong>Acción:</strong> Recuperar el espacio con iluminación y actividades comunitarias diurnas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: INFORME FINAL Y ESTRUCTURA DE PRESENTACIÓN (10 SLIDES) -->
+        <section id="sec-informe" class="tab-content hidden">
+            <div class="mb-6">
+                <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Entregables y Difusión</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Estructura del Informe Final y Presentación</h2>
+                <p class="text-slate-600 text-sm mt-1">Plantilla de informe técno-comunitario y diaporama de 10 láminas listo para presentar.</p>
+            </div>
+
+            <!-- TABBED SUB-TOGGLE: INFORME VS DIAPORAMA -->
+            <div class="flex border-b border-slate-200 mb-6 font-semibold text-sm">
+                <button onclick="toggleDeliverable('diaporamas')" id="subtab-diaporamas" class="py-2.5 px-4 text-teal-600 border-b-2 border-teal-600 flex items-center gap-2">
+                    <i data-lucide="presentation" class="w-4 h-4"></i> Estructura 10 Diapositivas
+                </button>
+                <button onclick="toggleDeliverable('informe')" id="subtab-informe" class="py-2.5 px-4 text-slate-500 hover:text-slate-800 flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Capítulos del Informe Final
+                </button>
+            </div>
+
+            <!-- SLIDE PRESENTATION INTERACTIVE VIEWER -->
+            <div id="deliverable-diaporamas" class="block">
+                <!-- CAROUSEL CONTROLS -->
+                <div class="flex items-center justify-between mb-4 bg-slate-100 p-3 rounded-xl text-xs font-semibold">
+                    <span class="text-slate-700">Diapositiva <span id="slide-num-indicator" class="text-teal-600 font-bold">1</span> de 10</span>
+                    <div class="flex gap-2">
+                        <button onclick="prevSlide()" class="p-1.5 bg-white rounded-lg shadow-sm hover:bg-slate-50 text-slate-700">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="nextSlide()" class="p-1.5 bg-white rounded-lg shadow-sm hover:bg-slate-50 text-slate-700">
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC SLIDE DISPLAY CARD -->
+                <div class="glass-card rounded-2xl p-8 shadow-md border border-slate-200 min-h-[320px] flex flex-col justify-between relative overflow-hidden" id="slide-card-container">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase" id="slide-tag">Diapositiva 1</span>
+                            <span class="text-xs text-slate-400 font-mono" id="slide-objective">Objetivo: Introducción</span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-3" id="slide-title">Portada y Propósito</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6" id="slide-body">
+                            Título: Diagnóstico Socio-Espiritual y Mapa Comunitario del Sector. Subtítulo: Radiografía integral, fortalezas y ruta de acción.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <i data-lucide="image" class="w-5 h-5 text-purple-600 shrink-0"></i>
+                        <div class="text-xs">
+                            <strong class="text-slate-800 block">Elemento Visual Recomendado:</strong>
+                            <span class="text-slate-600" id="slide-visual">Fotografía representativa del sector o imagen panorámica del mapa comunitario.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE GRID PREVIEW -->
+                <div class="grid grid-cols-5 md:grid-cols-10 gap-2 mt-4 text-center text-xs font-bold">
+                    <button onclick="goToSlide(1)" class="slide-thumb p-2 rounded-lg bg-teal-600 text-white shadow-sm">1</button>
+                    <button onclick="goToSlide(2)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">2</button>
+                    <button onclick="goToSlide(3)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">3</button>
+                    <button onclick="goToSlide(4)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">4</button>
+                    <button onclick="goToSlide(5)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">5</button>
+                    <button onclick="goToSlide(6)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">6</button>
+                    <button onclick="goToSlide(7)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">7</button>
+                    <button onclick="goToSlide(8)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">8</button>
+                    <button onclick="goToSlide(9)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">9</button>
+                    <button onclick="goToSlide(10)" class="slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700">10</button>
+                </div>
+            </div>
+
+            <!-- INFORME FINAL CHAPTERS OUTLINE -->
+            <div id="deliverable-informe" class="hidden space-y-4">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-xs space-y-3">
+                    <div class="font-bold text-slate-900 border-b pb-2 text-sm text-teal-700">Estructura del Informe Final de Diagnóstico</div>
+                    <div><strong>1. Resumen Ejecutivo:</strong> Justificación, delimitación territorial y 3 fortalezas / 3 desafíos clave.</div>
+                    <div><strong>2. Marco Metodológico:</strong> Recorridos, entrevistas semiestructuradas y talleres de cartografía.</div>
+                    <div><strong>3. Caracterización Socio-Demográfica (Tangible):</strong> Geografía, límites, servicios básicos y espacios públicos.</div>
+                    <div><strong>4. Diagnóstico Espiritual y Cultural (Intangible):</strong> Mapeo de fe, clima social, heridas comunitarias y signos de esperanza.</div>
+                    <div><strong>5. Cartografía Social:</strong> Simbología, mapas temáticos y análisis de la relación espacio-sociedad.</div>
+                    <div><strong>6. Matriz Integrada de Hallazgos:</strong> Jerarquización de necesidades a corto y largo plazo.</div>
+                    <div><strong>7. Conclusiones y Recomendaciones:</strong> Salud integral comunitaria y líneas de acción participativas.</div>
+                    <div><strong>8. Anexos:</strong> Mapas digitalizados, guías de entrevista utilizadas y registro fotográfico.</div>
+                </div>
+            </div>
+
+            <!-- PRESENTATION TIPS -->
+            <div class="mt-8 bg-slate-900 text-white rounded-2xl p-6 shadow-md">
+                <h3 class="text-sm font-bold text-teal-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i data-lucide="mic" class="w-4 h-4"></i> Recomendaciones para la Exposición Oral
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4 text-xs text-slate-300">
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <strong class="text-teal-200 block mb-1">⏱️ Tiempo Recomendado:</strong>
+                        15 a 20 minutos de exposición para dejar 20 minutos de diálogo directo con los vecinos.
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <strong class="text-purple-200 block mb-1">🗣️ Narrativa Humana:</strong>
+                        Apóyese en relatos e historias reales extraídas de las entrevistas para dar vida a los números.
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <strong class="text-amber-200 block mb-1">⚖️ Enfoque Balanceado:</strong>
+                        Mantenga un equilibrio entre las problemáticas y los recursos comunitarios para inspirar acción.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-teal-400"></i>
+                <span class="text-slate-200 font-semibold">Infografía de Diagnóstico Socio-Espiritual</span>
+            </div>
+            <p>Metodología participativa de Cartografía Social Comunitario</p>
+            <button onclick="window.print()" class="hover:text-white transition flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+                <i data-lucide="printer" class="w-3.5 h-3.5"></i> Imprimir / Guardar PDF
+            </button>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // INITIALIZE LUCIDE ICONS
+        lucide.createIcons();
+
+        // TAB SWITCHING SYSTEM
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-teal-50', 'text-teal-700', 'font-semibold', 'border', 'border-teal-200');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('bg-teal-50', 'text-teal-700', 'font-semibold', 'border', 'border-teal-200');
+            activeBtn.classList.remove('text-slate-600');
+        }
+
+        // SMOOTH SCROLL FUNCTION
+        function scrollToSection(secId) {
+            if (secId === 'flujo-metodologico') switchTab('pasos');
+            if (secId === 'simulador-mapa') switchTab('mapa');
+        }
+
+        // MAP LAYER TOGGLE
+        function toggleMapLayer(layer) {
+            const pins = document.querySelectorAll('.map-pin');
+            const btnAll = document.getElementById('layer-btn-all');
+            const btnTangible = document.getElementById('layer-btn-tangible');
+            const btnIntangible = document.getElementById('layer-btn-intangible');
+
+            [btnAll, btnTangible, btnIntangible].forEach(btn => {
+                btn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            if (layer === 'all') {
+                btnAll.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+                pins.forEach(pin => pin.style.display = 'block');
+            } else if (layer === 'tangible') {
+                btnTangible.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+                pins.forEach(pin => {
+                    pin.style.display = pin.classList.contains('layer-tangible') ? 'block' : 'none';
+                });
+            } else if (layer === 'intangible') {
+                btnIntangible.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+                pins.forEach(pin => {
+                    pin.style.display = pin.classList.contains('layer-intangible') ? 'block' : 'none';
+                });
+            }
+        }
+
+        // MAP PIN DETAILS INTERACTION
+        const pinDetailsData = {
+            'escuela': {
+                title: 'Escuela Local D-45',
+                badge: 'Tangible / Institución',
+                badgeColor: 'bg-blue-100 text-blue-800',
+                desc: 'Infraestructura educativa clave. Funciona como punto de reunión comunitaria los fines de semana y refugio en emergencias climáticas.',
+                dimension: 'Social / Física',
+                impacto: 'Alto (Protección infantil)'
+            },
+            'templo': {
+                title: 'Templo Evangélico y Capilla',
+                badge: 'Intangible / Espiritual',
+                badgeColor: 'bg-purple-100 text-purple-800',
+                desc: 'Lugar de oración y red de apoyo mutuo. Los vecinos acuden aquí para apoyo alimentario y escucha activa ante situaciones de dolor.',
+                dimension: 'Espiritual / Afectiva',
+                impacto: 'Alto (Sostén emocional)'
+            },
+            'riesgo': {
+                title: 'Esquina de Consumo y Microtráfico',
+                badge: 'Desafío / Riesgo',
+                badgeColor: 'bg-rose-100 text-rose-800',
+                desc: 'Punto crítico identificado en recorridos nocturnos. Ausencia de alumbrado público genera inseguridad en adultos mayores.',
+                dimension: 'Vulnerabilidad Social',
+                impacto: 'Urgente (Seguridad)'
+            },
+            'parque': {
+                title: 'Plaza Principal del Barrio',
+                badge: 'Tangible / Espacio Público',
+                badgeColor: 'bg-emerald-100 text-emerald-800',
+                desc: 'Hito histórico del sector. Durante el día es punto de encuentro vecinal, pero requiere mantención de juegos e iluminación.',
+                dimension: 'Física y Relacional',
+                impacto: 'Medio-Alto (Cohesión)'
+            },
+            'huerto': {
+                title: 'Huerto Comunitario Esperanza',
+                badge: 'Intangible / Signo de Fe',
+                badgeColor: 'bg-amber-100 text-amber-800',
+                desc: 'Proyecto autogestionado por jóvenes y adultos mayores. Representa la restauración comunitaria y el trabajo intergeneracional.',
+                dimension: 'Solidaridad y Recursos',
+                impacto: 'Alto (Signo de Esperanza)'
+            },
+            'cesfam': {
+                title: 'Centro de Salud Familiar (CESFAM)',
+                badge: 'Tangible / Servicio Público',
+                badgeColor: 'bg-teal-100 text-teal-800',
+                desc: 'Provee atención primaria. Mantiene articulación con líderes comunitarios para visitas domiciliarias a ancianos postrados.',
+                dimension: 'Infraestructura Sanitaria',
+                impacto: 'Vital (Salud física)'
+            }
+        };
+
+        function showPinDetail(pinKey) {
+            const data = pinDetailsData[pinKey];
+            if (!data) return;
+
+            document.getElementById('pin-detail-title').innerText = data.title;
+            const badge = document.getElementById('pin-detail-badge');
+            badge.innerText = data.badge;
+            badge.className = `text-[10px] font-bold px-2 py-0.5 rounded ${data.badgeColor}`;
+            document.getElementById('pin-detail-desc').innerText = data.desc;
+            document.getElementById('pin-meta-dimension').innerText = data.dimension;
+            document.getElementById('pin-meta-impacto').innerText = data.impacto;
+            document.getElementById('pin-detail-meta').classList.remove('hidden');
+        }
+
+        // DELIVERABLES SUBTAB SWITCH
+        function toggleDeliverable(type) {
+            const diapos = document.getElementById('deliverable-diaporamas');
+            const informe = document.getElementById('deliverable-informe');
+            const btnDiapos = document.getElementById('subtab-diaporamas');
+            const btnInforme = document.getElementById('subtab-informe');
+
+            if (type === 'diaporamas') {
+                diapos.classList.remove('hidden');
+                informe.classList.add('hidden');
+                btnDiapos.classList.add('text-teal-600', 'border-b-2', 'border-teal-600');
+                btnDiapos.classList.remove('text-slate-500');
+                btnInforme.classList.remove('text-teal-600', 'border-b-2', 'border-teal-600');
+                btnInforme.classList.add('text-slate-500');
+            } else {
+                diapos.classList.add('hidden');
+                informe.classList.remove('hidden');
+                btnInforme.classList.add('text-teal-600', 'border-b-2', 'border-teal-600');
+                btnInforme.classList.remove('text-slate-500');
+                btnDiapos.classList.remove('text-teal-600', 'border-b-2', 'border-teal-600');
+                btnDiapos.classList.add('text-slate-500');
+            }
+        }
+
+        // 10 SLIDES DATA AND CAROUSEL LOGIC
+        const slidesData = [
+            {
+                tag: 'Diapositiva 1',
+                title: 'Portada y Propósito del Diagnóstico',
+                objective: 'Presentación General',
+                body: 'Título: Diagnóstico Socio-Espiritual y Mapa Comunitario: [Nombre Sector]. Subtítulo: Radiografía integral, fortalezas y ruta de acción.',
+                visual: 'Fotografía representativa del sector o panorámica del mapa comunitario.'
+            },
+            {
+                tag: 'Diapositiva 2',
+                title: '¿Por qué y cómo lo hicimos? (Metodología)',
+                objective: 'Demostrar rigor técnico',
+                body: 'Recorridos de campo, número de entrevistas semiestructuradas a líderes clave, talleres participativos y mapeo cartográfico social.',
+                visual: 'Íconos representativos de Observación directa, Entrevistas y Cartografía.'
+            },
+            {
+                tag: 'Diapositiva 3',
+                title: 'Perfil del Territorio (Lo Tangible)',
+                objective: 'Contexto físico y demográfico',
+                body: 'Datos demográficos principales, accesibilidad, servicios presentes (escuelas, centros de salud) y estado de espacios públicos.',
+                visual: 'Gráfico de torta simple de grupos etarios o mapa de límites territoriales.'
+            },
+            {
+                tag: 'Diapositiva 4',
+                title: 'Clima Social y Convivencia Vecinal',
+                objective: 'Evaluar la cohesión social',
+                body: 'Nivel de confianza vecinal, sentido de pertenencia y efectividad/desarticulación de las organizaciones comunitarias locales.',
+                visual: 'Diagrama de red o citas breves extraídas de los diálogos en terreno.'
+            },
+            {
+                tag: 'Diapositiva 5',
+                title: 'Realidad Espiritual y Afectiva (Lo Intangible)',
+                objective: 'Exponer la dimensión de fe y dolor',
+                body: 'Presencia de comunidades de fe, lugares de escucha/refugio y dolores intangibles como la soledad en ancianos, duelos o falta de esperanza juvenil.',
+                visual: 'Cita textual destacada: "La gente no solo busca ayuda material, busca ser escuchada sin ser juzgada."'
+            },
+            {
+                tag: 'Diapositiva 6',
+                title: 'Mapa Comunitario: Fortalezas y Recursos',
+                objective: 'Visibilizar lo positivo del barrio',
+                body: 'Puntos de encuentro positivos, instituciones activas, líderes clave con vocación de servicio y zonas de protección comunitaria.',
+                visual: 'Imagen del Mapa Comunitario resaltando en íconos VERDES los recursos activos.'
+            },
+            {
+                tag: 'Diapositiva 7',
+                title: 'Mapa Comunitario: Desafíos y Zonas de Riesgo',
+                objective: 'Identificar focos de atención urgente',
+                body: 'Microbasurales, focos de inseguridad nocturna, esquinas de adicción o sectores de desamparo social.',
+                visual: 'Imagen del Mapa Comunitario resaltando en íconos ROJOS/AMARILLOS las zonas críticas.'
+            },
+            {
+                tag: 'Diapositiva 8',
+                title: 'Matriz de Priorización (Cruces Clave)',
+                objective: 'Sintetizar la intersección social-espiritual',
+                body: 'Necesidades urgentes vs Oportunidades comunitarias. Cruce de vulnerabilidades físicas con fortalezas espirituales.',
+                visual: 'Cuadrante o matriz de Frecuencia vs. Impacto.'
+            },
+            {
+                tag: 'Diapositiva 9',
+                title: 'Líneas de Acción y Propuestas',
+                objective: 'Definir el camino a seguir',
+                body: '3 pilares estratégicos: Recuperación de espacios públicos, programas de acompañamiento emocional/espiritual y alianzas vecinales.',
+                visual: 'Flujograma o 3 columnas de acción con íconos distintivos.'
+            },
+            {
+                tag: 'Diapositiva 10',
+                title: 'Próximos Pasos y Compromiso Comunitario',
+                objective: 'Cierre con llamado a la acción',
+                body: 'Calendario inmediato, conformación de comisiones de trabajo vecinal y fecha fijada para el próximo encuentro participativo.',
+                visual: 'Línea de tiempo simple y datos de contacto/coordinación del equipo.'
+            }
+        ];
+
+        let currentSlide = 1;
+
+        function updateSlideUI() {
+            const data = slidesData[currentSlide - 1];
+            document.getElementById('slide-num-indicator').innerText = currentSlide;
+            document.getElementById('slide-tag').innerText = data.tag;
+            document.getElementById('slide-title').innerText = data.title;
+            document.getElementById('slide-objective').innerText = `Objetivo: ${data.objective}`;
+            document.getElementById('slide-body').innerText = data.body;
+            document.getElementById('slide-visual').innerText = data.visual;
+
+            // Highlight thumbnail
+            document.querySelectorAll('.slide-thumb').forEach((btn, idx) => {
+                if (idx === currentSlide - 1) {
+                    btn.className = 'slide-thumb p-2 rounded-lg bg-teal-600 text-white shadow-sm font-bold';
+                } else {
+                    btn.className = 'slide-thumb p-2 rounded-lg bg-slate-200 text-slate-700 font-bold';
+                }
+            });
+        }
+
+        function goToSlide(num) {
+            currentSlide = num;
+            updateSlideUI();
+        }
+
+        function nextSlide() {
+            if (currentSlide < 10) {
+                currentSlide++;
+                updateSlideUI();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideUI();
+            }
+        }
+    </script>
+</body>
+</html>
