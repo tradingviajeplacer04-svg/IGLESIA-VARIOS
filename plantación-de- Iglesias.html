@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Símil Agrícola: La Siembra y la Plantación de Iglesias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+
+    <nav class="sticky top-0 z-50 glass-card border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🌱</span>
+                    <span class="font-bold text-lg text-slate-900 tracking-tight">Plantación Organica</span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-semibold text-slate-600">
+                    <a href="#etapas" class="hover:text-emerald-600 transition">Etapas del Proceso</a>
+                    <a href="#analisis" class="hover:text-emerald-600 transition">Análisis y Métricas</a>
+                    <a href="#matriz" class="hover:text-emerald-600 transition">Matriz Comparativa</a>
+                    <a href="#diagnostico" class="hover:text-emerald-600 transition">Diagnóstico</a>
+                </div>
+                <a href="#diagnostico" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs sm:text-sm px-4 py-2 rounded-lg shadow-sm transition">
+                    Evaluador de Campo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-gradient-to-b from-emerald-900 via-slate-900 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold tracking-wider uppercase mb-4 border border-emerald-500/30">
+                Infografía Interactiva & Modelo de Gestión
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+                La Siembra y la Plantación de Iglesias
+            </h1>
+            <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
+                El cultivo agrícola ofrece un modelo orgánico, estratégico y bíblico para edificar nuevas comunidades de fe. Un recorrido visual por las 6 etapas fundamentales desde la preparación del suelo hasta la reproducción comunitaria.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                <div class="bg-slate-800/80 border border-slate-700/60 p-4 rounded-xl text-center">
+                    <div class="text-3xl font-extrabold text-emerald-400">6</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Etapas Vitales</div>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/60 p-4 rounded-xl text-center">
+                    <div class="text-3xl font-extrabold text-amber-400">100%</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Enfoque Orgánico</div>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/60 p-4 rounded-xl text-center">
+                    <div class="text-3xl font-extrabold text-cyan-400">36+</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Meses de Desarrollo</div>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/60 p-4 rounded-xl text-center">
+                    <div class="text-3xl font-extrabold text-violet-400">Multi-</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">plicación Sostenible</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <section id="etapas" class="space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">El Ciclo Orgánico de la Plantación</h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Al igual que en la agricultura, saltear etapas o apresurar los tiempos altera la calidad del fruto. Haga clic en cualquiera de las fases para explorar sus acciones clave.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                <button onclick="selectStage(0)" id="tab-0" class="stage-tab p-4 rounded-xl bg-white border border-slate-200 text-left shadow-sm hover:border-emerald-500 transition-all focus:outline-none">
+                    <div class="text-2xl mb-2">🚜</div>
+                    <div class="text-xs font-bold uppercase text-emerald-600 mb-1">Fase 1</div>
+                    <div class="font-bold text-slate-900 text-sm">Trabajar la Tierra</div>
+                </button>
+                <button onclick="selectStage(1)" id="tab-1" class="stage-tab p-4 rounded-xl bg-white border border-slate-200 text-left shadow-sm hover:border-emerald-500 transition-all focus:outline-none">
+                    <div class="text-2xl mb-2">🧬</div>
+                    <div class="text-xs font-bold uppercase text-amber-600 mb-1">Fase 2</div>
+                    <div class="font-bold text-slate-900 text-sm">Elegir la Semilla</div>
+                </button>
+                <button onclick="selectStage(2)" id="tab-2" class="stage-tab p-4 rounded-xl bg-white border border-slate-200 text-left shadow-sm hover:border-emerald-500 transition-all focus:outline-none">
+                    <div class="text-2xl mb-2">🌱</div>
+                    <div class="text-xs font-bold uppercase text-cyan-600 mb-1">Fase 3</div>
+                    <div class="font-bold text-slate-900 text-sm">Sembrar</div>
+                </button>
+                <button onclick="selectStage(3)" id="tab-3" class="stage-tab p-4 rounded-xl bg-white border border-slate-200 text-left shadow-sm hover:border-emerald-500 transition-all focus:outline-none">
+                    <div class="text-2xl mb-2">💧</div>
+                    <div class="text-xs font-bold uppercase text-teal-600 mb-1">Fase 4</div>
+                    <div class="font-bold text-slate-900 text-sm">Fertilizar</div>
+                </button>
+                <button onclick="selectStage(4)" id="tab-4" class="stage-tab p-4 rounded-xl bg-white border border-slate-200 text-left shadow-sm hover:border-emerald-500 transition-all focus:outline-none">
+                    <div class="text-2xl mb-2">🛡️</div>
+                    <div class="text-xs font-bold uppercase text-violet-600 mb-1">Fase 5</div>
+                    <div class="font-bold text-slate-900 text-sm">Cuidar la Siembra</div>
+                </button>
+                <button onclick="selectStage(5)" id="tab-5" class="stage-tab p-4 rounded-xl bg-white border border-slate-200 text-left shadow-sm hover:border-emerald-500 transition-all focus:outline-none">
+                    <div class="text-2xl mb-2">🍇</div>
+                    <div class="text-xs font-bold uppercase text-orange-600 mb-1">Fase 6</div>
+                    <div class="font-bold text-slate-900 text-sm">Cosecha</div>
+                </button>
+            </div>
+
+            <div id="stage-detail-card" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-md transition-all">
+            </div>
+        </section>
+
+        <section id="analisis" class="space-y-10">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Análisis y Dinámicas de Crecimiento</h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    La plantación exitosa requiere equilibrio entre la inversión estratégica de recursos, la madurez relacional y el enfoque en la salud cualitativa de la comunidad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Distribución de Recursos y Tiempo</h3>
+                                <p class="text-xs text-slate-500">Esfuerzo porcentual sugerido por cada fase del proyecto</p>
+                            </div>
+                            <span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded">Inversión</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4">
+                            La preparación previa y el discipulado inicial consumen más del 50% de los recursos totales. Un error frecuente es concentrar todo el presupuesto únicamente en el evento de lanzamiento.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="effortChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Salud Comunitaria vs Crecimiento Numérico</h3>
+                                <p class="text-xs text-slate-500">Evolución proyectada a lo largo de un horizonte de 36 meses</p>
+                            </div>
+                            <span class="px-2 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded">Progresión</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4">
+                            El crecimiento numérico sólido es consecuencia de una alta salud comunitaria. La curva demuestra que la madurez interna debe consolidarse antes de experimentar la aceleración numérica.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Equilibrio Integral del Proyecto</h3>
+                                <p class="text-xs text-slate-500">Evaluación de salud en 6 pilares ministeriales</p>
+                            </div>
+                            <span class="px-2 py-1 bg-cyan-50 text-cyan-700 text-xs font-bold rounded">Balance</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4">
+                            Una obra saludable mantiene un desarrollo armonioso. Neglegir el cuidado pastoral o la preparación contextual debilita la capacidad de sostener nuevos creyentes.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Proyección de Impacto: Adición vs Multiplicación</h3>
+                                <p class="text-xs text-slate-500">Comparativa a 5 años entre crecimiento tradicional y reproductivo</p>
+                            </div>
+                            <span class="px-2 py-1 bg-violet-50 text-violet-700 text-xs font-bold rounded">Impacto</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4">
+                            La cosecha biológica busca la conservación de semillas para la próxima temporada. La iglesia local que forma nuevos líderes se multiplica exponencialmente al plantar hijas.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="multiplicationChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="matriz" class="space-y-6">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Matriz Comparativa Resumida</h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Un desglose sintético que conecta la labor física del campo con la acción espiritual y estratégica en la iglesia.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-900 text-white uppercase text-xs tracking-wider">
+                        <tr>
+                            <th class="py-4 px-6">Etapa Agrícola</th>
+                            <th class="py-4 px-6">Equivalente Eclesial</th>
+                            <th class="py-4 px-6">Acción Clave</th>
+                            <th class="py-4 px-6">Entregable / Fruto Esperado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-emerald-50/50 transition">
+                            <td class="py-4 px-6 font-bold text-emerald-800 flex items-center space-x-2">
+                                <span>🚜</span>
+                                <span>1. Trabajar la tierra</span>
+                            </td>
+                            <td class="py-4 px-6 font-medium text-slate-900">Preparación y Diagnóstico</td>
+                            <td class="py-4 px-6">Oración de intercesión, mapeo socio-cultural y construcción de puentes relacionales.</td>
+                            <td class="py-4 px-6"><span class="inline-block px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded font-semibold">Diagnóstico Contextual</span></td>
+                        </tr>
+                        <tr class="hover:bg-amber-50/50 transition">
+                            <td class="py-4 px-6 font-bold text-amber-800 flex items-center space-x-2">
+                                <span>🧬</span>
+                                <span>2. Elegir la semilla</span>
+                            </td>
+                            <td class="py-4 px-6 font-medium text-slate-900">Visión y Contextualización</td>
+                            <td class="py-4 px-6">Formulación de la visión, estrategia de comunicación y articulación del Evangelio.</td>
+                            <td class="py-4 px-6"><span class="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded font-semibold">Declaración de Visión</span></td>
+                        </tr>
+                        <tr class="hover:bg-cyan-50/50 transition">
+                            <td class="py-4 px-6 font-bold text-cyan-800 flex items-center space-x-2">
+                                <span>🌱</span>
+                                <span>3. Sembrar</span>
+                            </td>
+                            <td class="py-4 px-6 font-medium text-slate-900">Evangelización e Inicio</td>
+                            <td class="py-4 px-6">Testimonio personal, servicios comunitarios y apertura de pequeños grupos relacionales.</td>
+                            <td class="py-4 px-6"><span class="inline-block px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded font-semibold">Grupo Núcleo Activo</span></td>
+                        </tr>
+                        <tr class="hover:bg-teal-50/50 transition">
+                            <td class="py-4 px-6 font-bold text-teal-800 flex items-center space-x-2">
+                                <span>💧</span>
+                                <span>4. Fertilizar</span>
+                            </td>
+                            <td class="py-4 px-6 font-medium text-slate-900">Discipulado y Liderazgo</td>
+                            <td class="py-4 px-6">Enseñanza bíblica intencional, mentoría y desarrollo de dones espirituales.</td>
+                            <td class="py-4 px-6"><span class="inline-block px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded font-semibold">Líderes Locales Capaces</span></td>
+                        </tr>
+                        <tr class="hover:bg-violet-50/50 transition">
+                            <td class="py-4 px-6 font-bold text-violet-800 flex items-center space-x-2">
+                                <span>🛡️</span>
+                                <span>5. Cuidar la siembra</span>
+                            </td>
+                            <td class="py-4 px-6 font-medium text-slate-900">Pastoreo y Protección</td>
+                            <td class="py-4 px-6">Cuidado pastoral continuo, resolución de conflictos y preservación de la sana doctrina.</td>
+                            <td class="py-4 px-6"><span class="inline-block px-2 py-1 bg-violet-100 text-violet-800 text-xs rounded font-semibold">Comunidad Saludable</span></td>
+                        </tr>
+                        <tr class="hover:bg-orange-50/50 transition">
+                            <td class="py-4 px-6 font-bold text-orange-800 flex items-center space-x-2">
+                                <span>🍇</span>
+                                <span>6. Cosecha</span>
+                            </td>
+                            <td class="py-4 px-6 font-medium text-slate-900">Multiplicación y Envío</td>
+                            <td class="py-4 px-6">Autonomía local, bautismos, consolidación oficial y envío de nuevos plantadores.</td>
+                            <td class="py-4 px-6"><span class="inline-block px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded font-semibold">Iglesia Madre Autónoma</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="diagnostico" class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-700">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-emerald-400 font-bold uppercase text-xs tracking-wider">Herramienta Interactiva</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold">Evaluador de Salud del Terreno</h2>
+                    <p class="text-slate-300 text-sm">
+                        Evalúe el estado actual de su proyecto de plantación respondiendo a las preguntas de cada etapa para obtener un diagnóstico visual instantáneo.
+                    </p>
+                </div>
+
+                <div class="space-y-4 pt-4">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>1. Preparación y Arado (Oración y Diagnóstico)</span>
+                            <span id="score-val-0" class="text-emerald-400">3 / 5</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" oninput="updateScore(0, this.value)" class="w-full accent-emerald-500 bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>2. Claridad de la Semilla (Visión y Contextualización)</span>
+                            <span id="score-val-1" class="text-amber-400">3 / 5</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" oninput="updateScore(1, this.value)" class="w-full accent-amber-500 bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>3. Esfuerzo de Siembra (Evangelización Relacional)</span>
+                            <span id="score-val-2" class="text-cyan-400">3 / 5</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" oninput="updateScore(2, this.value)" class="w-full accent-cyan-500 bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>4. Intensidad de Fertilización (Discipulado Activo)</span>
+                            <span id="score-val-3" class="text-teal-400">3 / 5</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" oninput="updateScore(3, this.value)" class="w-full accent-teal-500 bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>5. Nivel de Cuidado Pastoral (Protección e Integración)</span>
+                            <span id="score-val-4" class="text-violet-400">3 / 5</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" oninput="updateScore(4, this.value)" class="w-full accent-violet-500 bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>6. Visión de Cosecha (Capacidad de Multiplicación)</span>
+                            <span id="score-val-5" class="text-orange-400">3 / 5</span>
+                        </div>
+                        <input type="range" min="1" max="5" value="3" oninput="updateScore(5, this.value)" class="w-full accent-orange-500 bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="p-6 bg-slate-800/90 rounded-2xl border border-slate-700 text-center space-y-3 mt-6">
+                    <div class="text-xs uppercase text-slate-400 font-semibold tracking-wider">Resultado del Diagnóstico</div>
+                    <div id="diagnostic-rating" class="text-2xl font-bold text-emerald-400">Terreno en Fase de Enraizamiento</div>
+                    <p id="diagnostic-desc" class="text-xs text-slate-300 leading-relaxed max-w-xl mx-auto">
+                        Su equipo posee un equilibrio medio. Se recomienda profundizar en la fertilización (discipulado intencional) antes de intentar acelerar la fase de cosecha.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-slate-300">Modelo Orgánico de Plantación de Iglesias</p>
+            <p>Símil metodológico basado en el ciclo bíblico y natural del cultivo agrícola.</p>
+        </div>
+    </footer>
+
+    <script>
+        const stagesData = [
+            {
+                title: "1. Trabajar la tierra (Preparación y Arado)",
+                badge: "Fase 1 · Arado del Terreno",
+                badgeBg: "bg-emerald-100 text-emerald-800",
+                icon: "🚜",
+                duration: "Meses 0 - 6",
+                summary: "En la agricultura, antes de colocar cualquier semilla, el agricultor debe deshierbar, quitar las piedras y asegurar que el suelo sea fértil.",
+                churchAnalogy: "Representa la fase de preparación espiritual y estudio del entorno. Implica arar el terreno espiritual mediante la intercesión constante, realizar un mapeo socio-demográfico detallado y entablar relaciones de confianza y empatía con líderes locales.",
+                deliverable: "Diagnóstico socio-espiritual y mapa comunitario completado.",
+                keyAction: "Oración intensa y puentes relacionales genuinos.",
+                risk: "Precipitar la siembra en suelo duro o hostil."
+            },
+            {
+                title: "2. Elegir la semilla (Visión y Contextualización)",
+                badge: "Fase 2 · Selección de Semilla",
+                badgeBg: "bg-amber-100 text-amber-800",
+                icon: "🧬",
+                duration: "Meses 3 - 6",
+                summary: "Seleccionar la variedad de semilla adecuada al clima y al tipo de suelo determina la supervivencia de la cosecha.",
+                churchAnalogy: "Aunque la verdad del Evangelio es inmutable, la forma de articular el mensaje y la visión ministerial deben adaptarse al contexto cultural, idiomático y generacional de la zona.",
+                deliverable: "Declaración de visión clara y estrategia contextualizada.",
+                keyAction: "Articulación relevante del Evangelio sin comprometer su esencia.",
+                risk: "Importar modelos enlatados no aplicables al suelo local."
+            },
+            {
+                title: "3. Sembrar (Evangelización y Lanzamiento)",
+                badge: "Fase 3 · Siembra en Campo",
+                badgeBg: "bg-cyan-100 text-cyan-800",
+                icon: "🌱",
+                duration: "Meses 6 - 12",
+                summary: "Es la deposición intencional y generosa de la semilla en la tierra en la época propicia.",
+                churchAnalogy: "Es la evangelización activa a través del testimonio, el servicio comunitario y la formación del primer grupo núcleo en hogares o espacios neutros.",
+                deliverable: "Primer grupo núcleo consolidado (15-30 personas).",
+                keyAction: "Evangelismo relacional y apertura de pequeños grupos.",
+                risk: "Sembrar esporádicamente o con baja frecuencia."
+            },
+            {
+                title: "4. Fertilizar (Discipulado y Capacitación)",
+                badge: "Fase 4 · Nutrición y Abono",
+                badgeBg: "bg-teal-100 text-teal-800",
+                icon: "💧",
+                duration: "Meses 12 - 24",
+                summary: "Suministrar agua, nitrógeno y nutrientes esenciales para robustecer la raíz de los brotes jóvenes.",
+                churchAnalogy: "Representa el discipulado intencional de los nuevos creyentes y la capacitación sistemática de líderes locales para servir según sus dones.",
+                deliverable: "Líderes locales capacitados en funciones clave.",
+                keyAction: "Formación teológica práctica y mentoreo personal.",
+                risk: "Depender únicamente del líder fundador sin empoderar a la comunidad."
+            },
+            {
+                title: "5. Cuidar la siembra (Pastoreo y Protección)",
+                badge: "Fase 5 · Protección del Cultivo",
+                badgeBg: "bg-violet-100 text-violet-800",
+                icon: "🛡️",
+                duration: "Meses 18 - 36",
+                summary: "Vigilar el campo para evitar que las plagas, la mala hierba o la sequía destruyan las plantas en desarrollo.",
+                churchAnalogy: "Pastoreo continuo, resolución de fricciones internas, consejería de crisis y preservación de un ambiente seguro y doctrinariamente sano.",
+                deliverable: "Cultura comunitaria saludable y cohesión espiritual.",
+                keyAction: "Acompañamiento pastoral y resolución de conflictos.",
+                risk: "Tolerar divisiones o ignorar el agotamiento del equipo."
+            },
+            {
+                title: "6. Cosecha (Multiplicación y Envío)",
+                badge: "Fase 6 · Cosecha y Reproducción",
+                badgeBg: "bg-orange-100 text-orange-800",
+                icon: "🍇",
+                duration: "Meses 36+",
+                summary: "Recoger el fruto maduro y guardar las mejores semillas para iniciar un nuevo ciclo de cultivo.",
+                churchAnalogy: "Establecimiento formal de la iglesia autosostenible, la celebración de bautismos y el envío de obreros para plantar una nueva obra en otro lugar.",
+                deliverable: "Iglesia autónoma y lanzamiento de nueva obra hija.",
+                keyAction: "Consolidación de la autonomía y envío de plantadores.",
+                risk: "Estancarse en el confort sin reproducirse."
+            }
+        ];
+
+        let scores = [3, 3, 3, 3, 3, 3];
+
+        function selectStage(index) {
+            const data = stagesData[index];
+            
+            document.querySelectorAll('.stage-tab').forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-50/50');
+                } else {
+                    tab.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-50/50');
+                }
+            });
+
+            const detailBox = document.getElementById('stage-detail-card');
+            detailBox.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl p-2 bg-slate-100 rounded-xl">${data.icon}</span>
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${data.badge} mb-1">${data.badge}</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900">${data.title}</h3>
+                            </div>
+                        </div>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1.5 rounded-lg">Tiempo Estimado: ${data.duration}</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200/80">
+                            <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center space-x-2">
+                                <span>🌾</span> <span>En la Agricultura</span>
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${data.summary}</p>
+                        </div>
+                        <div class="bg-emerald-50/60 p-5 rounded-xl border border-emerald-100">
+                            <h4 class="font-bold text-emerald-900 text-sm mb-2 flex items-center space-x-2">
+                                <span>⛪</span> <span>En la Plantación de Iglesias</span>
+                            </h4>
+                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed">${data.churchAnalogy}</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-3 bg-white border border-slate-200 rounded-lg">
+                            <div class="text-xs font-bold text-slate-400 uppercase">Acción Clave</div>
+                            <div class="text-xs font-semibold text-slate-800 mt-1">${data.keyAction}</div>
+                        </div>
+                        <div class="p-3 bg-white border border-slate-200 rounded-lg">
+                            <div class="text-xs font-bold text-slate-400 uppercase">Entregable Principal</div>
+                            <div class="text-xs font-semibold text-slate-800 mt-1">${data.deliverable}</div>
+                        </div>
+                        <div class="p-3 bg-rose-50 border border-rose-100 rounded-lg">
+                            <div class="text-xs font-bold text-rose-500 uppercase">Riesgo Principal</div>
+                            <div class="text-xs font-semibold text-rose-800 mt-1">${data.risk}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateScore(index, val) {
+            scores[index] = parseInt(val);
+            document.getElementById(`score-val-${index}`).innerText = `${val} / 5`;
+            
+            const total = scores.reduce((a, b) => a + b, 0);
+            const avg = total / 6;
+            
+            const ratingEl = document.getElementById('diagnostic-rating');
+            const descEl = document.getElementById('diagnostic-desc');
+            
+            if (avg < 2.2) {
+                ratingEl.innerText = "Terreno Seco (Fase Inicial de Arado)";
+                ratingEl.className = "text-2xl font-bold text-rose-400";
+                descEl.innerText = "Su proyecto requiere mayor trabajo de preparación, oración y conocimiento del entorno antes de acelerar las actividades públicas.";
+            } else if (avg < 3.8) {
+                ratingEl.innerText = "Terreno en Fase de Enraizamiento";
+                ratingEl.className = "text-2xl font-bold text-amber-400";
+                descEl.innerText = "Existe una base funcional. Concentre sus esfuerzos en el discipulado intensivo (fertilización) y el pastoreo para afianzar el grupo núcleo.";
+            } else {
+                ratingEl.innerText = "Campo Fértil Listo para la Cosecha";
+                ratingEl.className = "text-2xl font-bold text-emerald-400";
+                descEl.innerText = "Su comunidad muestra alta madurez. Es el momento idóneo para fortalecer la autonomía local y planificar el envío de obreros a nuevas zonas.";
+            }
+        }
+
+        function initCharts() {
+            const chartOptionsBase = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#334155',
+                            font: { family: 'Plus Jakarta Sans', size: 11, weight: 500 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const effortCtx = document.getElementById('effortChart').getContext('2d');
+            new Chart(effortCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['1. Trabajar Tierra', '(Preparación)'],
+                        ['2. Elegir Semilla', '(Visión/Mensaje)'],
+                        ['3. Sembrar', '(Evangelización)'],
+                        ['4. Fertilizar', '(Discipulado)'],
+                        ['5. Cuidar Siembra', '(Pastoreo)'],
+                        ['6. Cosecha', '(Multiplicación)']
+                    ],
+                    datasets: [{
+                        label: 'Asignación de Tiempo/Recursos (%)',
+                        data: [25, 10, 20, 25, 12, 8],
+                        backgroundColor: ['#059669', '#d97706', '#0891b2', '#0d9488', '#7c3aed', '#ea580c'],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    ...chartOptionsBase,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 30,
+                            ticks: { callback: value => value + '%' }
+                        }
+                    }
+                }
+            });
+
+            const growthCtx = document.getElementById('growthChart').getContext('2d');
+            new Chart(growthCtx, {
+                type: 'line',
+                data: {
+                    labels: [
+                        ['Mes 0-6', '(Preparación)'],
+                        ['Mes 6-12', '(Siembra)'],
+                        ['Mes 12-18', '(Fertilización)'],
+                        ['Mes 18-24', '(Pastoreo)'],
+                        ['Mes 24-36', '(Cosecha)'],
+                        ['Mes 36+', '(Multiplicación)']
+                    ],
+                    datasets: [
+                        {
+                            label: 'Salud Comunitaria (0-100)',
+                            data: [40, 55, 75, 85, 90, 95],
+                            borderColor: '#059669',
+                            backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Asistencia Núcleo (Personas)',
+                            data: [5, 15, 30, 50, 85, 120],
+                            borderColor: '#d97706',
+                            borderDash: [5, 5],
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: chartOptionsBase
+            });
+
+            const radarCtx = document.getElementById('radarChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        ['Intercesión y', 'Diagnóstico'],
+                        ['Claridad de', 'Visión'],
+                        ['Evangelización', 'Relacional'],
+                        ['Discipulado', 'Intensivo'],
+                        ['Cuidado y', 'Pastoreo'],
+                        ['Capacidad de', 'Envío']
+                    ],
+                    datasets: [
+                        {
+                            label: 'Modelo Objetivo',
+                            data: [90, 85, 80, 90, 85, 80],
+                            borderColor: '#059669',
+                            backgroundColor: 'rgba(5, 150, 105, 0.2)'
+                        },
+                        {
+                            label: 'Promedio Promotor',
+                            data: [60, 90, 70, 50, 60, 40],
+                            borderColor: '#d97706',
+                            backgroundColor: 'rgba(217, 119, 6, 0.2)'
+                        }
+                    ]
+                },
+                options: chartOptionsBase
+            });
+
+            const multCtx = document.getElementById('multiplicationChart').getContext('2d');
+            new Chart(multCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['Año 1', '(Siembra)'],
+                        ['Año 2', '(Consolidación)'],
+                        ['Año 3', '(Cosecha)'],
+                        ['Año 4', '(Envío 1)'],
+                        ['Año 5', '(Red de Ig.)']
+                    ],
+                    datasets: [
+                        {
+                            label: 'Crecimiento Aditivo (Sin Envío)',
+                            data: [30, 50, 70, 85, 100],
+                            backgroundColor: '#94a3b8',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Modelo Multiplicativo (Nuevas Obras)',
+                            data: [30, 55, 90, 160, 280],
+                            backgroundColor: '#ea580c',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: chartOptionsBase
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            selectStage(0);
+            initCharts();
+        });
+    </script>
+</body>
+</html>
